@@ -15,21 +15,48 @@ include __DIR__ . './database.php';
 </head>
 
 <body>
-    <div class="row p-4 justify-content-around">
-        <?php foreach ($ALLProducts as $item) { ?>
-            <div class="col-12 col-md-3 col-sm-6">
-                <div class="card">
-                    <?php
-                    echo "<img class='card-img-top' src='" . $item->image . "'>";
-                    ?>
-                    <div class="card-body">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>BoolShop</h1>
+        </div>
+        <div class="row">
+            <h4>
+                I nostri prodotti:
+            </h4>
+        </div>
+        <div class="row">
+            <?php foreach ($ALLProducts as $item) { ?>
+                <div class="col-12 col-md-3 col-sm-6">
+                    <div class="card my-2">
                         <?php
-                        echo "<h5 class='card-title'>" . $item->titolo . "</h5>";
+                        echo "<img class='card-img-top' src='" . $item->image . "'>";
                         ?>
+                        <div class="card-body">
+                            <?php
+                            echo "<h5 class='card-title'>" . $item->titolo . "</h5>";
+                            ?>
+                            <?php
+                            echo "<div class='card-text'>" . $item->categoria . "</div>";
+                            ?>
+                            <?php
+                            echo "<div class='card-text'>" . $item->prezzo . "</div>";
+                            ?>
+                            <?php
+                            if ($item instanceof Food) {
+                                echo '<p>Ingredienti: ' . implode(', ', $item->food) . '</p>';
+                            }
+                            if ($item instanceof Other) {
+                                echo '<p>Dimensioni: ' . implode(', ', $item->other) . '</p>';
+                            }
+                            if ($item instanceof Toys) {
+                                echo '<p>Ingredienti: ' . $item->toys . '</p>';
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
 </body>
 
