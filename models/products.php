@@ -17,4 +17,4 @@ class products
 
 $movie1 = new products('img', 'titolo', 'prezzo', 'categoria');
 
-echo "<h2>" . $movie1->image . "</h2>";
+// echo "<h2>" . $movie1->image . "</h2>";
